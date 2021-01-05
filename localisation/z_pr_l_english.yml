@@ -18,9 +18,9 @@
 ###_[core]  game_start/var  ######################################################################
  z_pr:0 "Production Revolution"
 
- z_pr_tips_rule_production_bonus: "Rule of Production Bonus: §GManpower Bonus§!((Total Manpower + Migrating Pop) × Additional Modifiers(Devastation + Planet Econ. Policy) / $z_pr_res_post_0$) × $z_tips_bouns_common$(Techs + Civics + Tradtions + Ascension Perks + Modifiers + Buildings + Planet Features etc.) × $z_tips_bouns_sp$(Species + Colony Type + Econ. Policy)\nWhen manpower is less than $z_pr_res_post_0$, all productions will suffer a negative modifier, which can be net with other techs or empire modifiers.\nWhen manpower is greater than $z_pr_res_post_0$, productions will get bonus, which scales the same as manpower increases.\nOther fields that scale with industry or manpower include production output, upkeep, planet upkeep, trade value, administrative capacity, planet defense army, and naval capacity."
+ z_pr_tips_rule_production_bonus: "Rule of Production Bonus: §GTotal Manpower§! / $z_pr_res_post_0$ × $z_tips_bouns_common$(Techs + Civics + Tradtions + Ascension Perks + Modifiers + Buildings + Planet Features etc.) × $z_tips_bouns_sp$(Species + Colony Type + Planetray Social Characteristics)\nWhen manpower is less than $z_pr_res_post_0$, all productions will suffer a negative modifier, which can be net with other techs or empire modifiers.\nWhen manpower is greater than $z_pr_res_post_0$, productions will get bonus, which scales the same as manpower increases.\nOther fields that scale with industry or manpower include production output, upkeep, planet upkeep, trade value, administrative capacity, planet defense army, and naval capacity."
  #
- #"星球产业加成规则: §G人力加成§!((人力总量+流动人口) × 额外修正(破坏度+星球经济政策) / $z_pr_res_post_0$) × $z_tips_bouns_common$(科技+国策+传统+飞升+修正+建筑+星球特性等) × $z_tips_bouns_sp$(物种构成+殖民地类型+经济政策)\n当人力小于$z_pr_res_post_0$时，产业会受到负修正，但是在后期这些负修正可能被其他科技或国家修正填平.\n当人力大于$z_pr_res_post_0$时，产业会受到正修正，也就是人力越多加成越高.\n受产业加成或人力加成影响的领域包括产业资源产出，产业维护消耗，星球维护值，贸易值，管理值，行星防卫军数量，星球海军上限修正等."
+ #"星球产业加成规则：§G人力加成§!((人力总量+流动人口) × 额外修正(破坏度+星球经济政策) / $z_pr_res_post_0$) × $z_tips_bouns_common$(科技+国策+传统+飞升+修正+建筑+星球特性等) × $z_tips_bouns_sp$(物种构成+殖民地类型+经济政策)\n当人力小于$z_pr_res_post_0$时，产业会受到负修正，但是在后期这些负修正可能被其他科技或国家修正填平.\n当人力大于$z_pr_res_post_0$时，产业会受到正修正，也就是人力越多加成越高.\n受产业加成或人力加成影响的领域包括产业资源产出，产业维护消耗，星球维护值，贸易值，管理值，行星防卫军数量，星球海军上限修正等."
 
  #"§B产业参数§!"
  z_pr_post:0 "§BProduction Parameters§!"
@@ -35,34 +35,28 @@
 #_[var]
  z_pr_var_plnt_pop_manpower:0 "Total amount of §BManpower§! and §GPops§!"
 
-
-
-
 ###_[pr资源]  ######################################################################
 ##"§B生产基数§!"
  z_pr_res_post_0:0 "§BProduction Base§!" 
- z_pr_res_post:0 "$z_pr$: $z_pr_res_post_0$"
- z_pr_res_post_desc: "$z_pr_res_post_0$ represents the current avaliable production job slots based on planet manpower.\nWhen manpower is less than $z_pr_res_post_0$, production will decrease, and vice versa. However, if the manpower is much greater than $z_pr_res_post_0$, the bonus will be reduced as such level of labor density is counter-productive."
+ z_pr_res_post:0 "$z_pr$：$z_pr_res_post_0$"
+ z_pr_res_post_desc: "$z_pr_res_post_0$ represents the current avaliable production job slots based on planet manpower.\nWhen manpower is less than $z_pr_res_post_0$, production will decrease, and vice versa."
  #"$z_pr_res_post_0$表示当前星球人力可用的岗位数量.\n当人力小于$z_pr_res_post_0$时，产出会受到减成.\n当人力大于$z_pr_res_post_0$时，产出会受到加成.\n当人力超出$z_pr_res_post_0$过多时，会因为生产密度过高而削减加成."
- z_pr_res_navy_0:0 "§BNavy Industry§! 
- #"§B海军工业§!"
- z_pr_res_navy:0 "$z_pr$: $z_pr_res_navy_0$"
+ z_pr_res_navy_0:0 "§BNavy Industry§!"
+ z_pr_res_navy:0 "$z_pr$：$z_pr_res_navy_0$"
  z_pr_res_navy_desc:0 "Each point of $z_pr_res_navy_0$ will be converted to equal amount of naval capacity."
- z_pr_res_admin_0:0 "Administrative Power" 
- #"§B管理值§!"
- z_pr_res_admin:0 "$z_pr$: $z_pr_res_admin_0$"
+ z_pr_res_admin_0:0 "Administrative Power"
+ z_pr_res_admin:0 "$z_pr$：$z_pr_res_admin_0$"
  z_pr_res_admin_desc:0 "Each point of $z_pr_res_admin_0$ will be converted to equal amount of administrative capacity."
- z_pr_res_guard_0:0 "§BPlanetary Defense Force§!" 
- #"§B行星防卫军§!"
- z_pr_res_guard:0 "$z_pr$: $z_pr_res_guard_0$"
+ z_pr_res_guard_0:0 "§BPlanetary Defense Force§!"
+ z_pr_res_guard:0 "$z_pr$：$z_pr_res_guard_0$"
  z_pr_res_guard_desc:0 "Each point of $z_pr_res_guard_0$ will count as a planetary defense army."
 
 
 ###_[pr职位]  ######################################################################
 #_pop_cat
- pop_cat_z_pr_freeman:0 "Migrating Pop"  
- #"流动人口"
- pop_cat_z_pr_freeman_plural:0 "Migrating Pops"
+##"流动人口"
+ pop_cat_z_pr_freeman:0 "Freeman"  
+ pop_cat_z_pr_freeman_plural:0 "Freemen"
  pop_cat_z_pr_freeman_desc:0 "Wanderers, travelers, and opportunity-seeking adventurers, they live without a place called home, and might move to wherever else at any time." 
  #"流浪者，旅行者或者是来寻找机会的人群，它们居无定所，随时可能会移民到别处."
  
@@ -97,54 +91,56 @@
 
 ###_[pr地块]	流动人口/增长率控制/维护_加成/ai建筑	###################################################
 #_[流动人口]
- z_pr_d_pop_standard_5:0 "$z_pr$: §BStandard§! Migrating Pop/Manpower"
- z_pr_d_pop_standard_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_tips_d_pop_function:0 "\nThis functional module controls the planet's species composition, and the species structure will slowly change according to the current settings.\n\nIn addition, this module can also convey real-time Production Parameter information to you such as:\n$z_pr_res_post_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_desc$\n$z_pr_res_admin_0$\n$z_pr_res_admin_desc$\n$z_pr_res_guard_0$\n$z_pr_res_guard_desc$\n"
+ 
+ z_pr_d_pop_standard_5:0 "$z_pr$：§BStandard§! Specis Composition"
+ z_pr_d_pop_standard_5_desc:0 "$z_pr_dec_spcs_standard_desc$"
  z_pr_d_pop_standard_10:0 "$z_pr_d_pop_standard_5$"
- z_pr_d_pop_standard_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_10_desc:0 "$z_pr_dec_spcs_standard_desc$"
  z_pr_d_pop_standard_15:0 "$z_pr_d_pop_standard_5$"
- z_pr_d_pop_standard_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_15_desc:0 "$z_pr_dec_spcs_standard_desc$"
  z_pr_d_pop_standard_20:0 "$z_pr_d_pop_standard_5$"
- z_pr_d_pop_standard_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_20_desc:0 "$z_pr_dec_spcs_standard_desc$"
  z_pr_d_pop_standard_25:0 "$z_pr_d_pop_standard_5$"
- z_pr_d_pop_standard_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_25_desc:0 "$z_pr_dec_spcs_standard_desc$"
  
- z_pr_d_pop_full_5:0 "$z_pr$: §RPure Blood§! Migrating Pop/Manpower" 
- #"$z_pr$: §R纯血型§!流动人口/人力"
- z_pr_d_pop_full_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_5:0 "$z_pr$：§RPure Blood§! Specis Composition" 
+ #"$z_pr$：§R纯血型§!流动人口/人力"
+ z_pr_d_pop_full_5_desc:0 "$z_pr_dec_spcs_full_desc$"
  z_pr_d_pop_full_10:0 "$z_pr_d_pop_full_5$"
- z_pr_d_pop_full_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_10_desc:0 "$z_pr_dec_spcs_full_desc$"
  z_pr_d_pop_full_15:0 "$z_pr_d_pop_full_5$"
- z_pr_d_pop_full_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_15_desc:0 "$z_pr_dec_spcs_full_desc$"
  z_pr_d_pop_full_20:0 "$z_pr_d_pop_full_5$"
- z_pr_d_pop_full_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_20_desc:0 "$z_pr_dec_spcs_full_desc$"
  z_pr_d_pop_full_25:0 "$z_pr_d_pop_full_5$"
- z_pr_d_pop_full_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_25_desc:0 "$z_pr_dec_spcs_full_desc$"
  
- z_pr_d_pop_full_5:0 "$z_pr$: §GCo-Prosperity§! Migrating Pop/Manpower" 
+ z_pr_d_pop_full_5:0 "$z_pr$：§GCo-Prosperity§! Specis Composition" 
  #共荣
- z_pr_d_pop_limited_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_5_desc:0 "$z_pr_dec_spcs_limited_desc$"
  z_pr_d_pop_limited_10:0 "$z_pr_d_pop_limited_5$"
- z_pr_d_pop_limited_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_10_desc:0 "$z_pr_dec_spcs_limited_desc$"
  z_pr_d_pop_limited_15:0 "$z_pr_d_pop_limited_5$"
- z_pr_d_pop_limited_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_15_desc:0 "$z_pr_dec_spcs_limited_desc$"
  z_pr_d_pop_limited_20:0 "$z_pr_d_pop_limited_5$"
- z_pr_d_pop_limited_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_20_desc:0 "$z_pr_dec_spcs_limited_desc$"
  z_pr_d_pop_limited_25:0 "$z_pr_d_pop_limited_5$"
- z_pr_d_pop_limited_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_25_desc:0 "$z_pr_dec_spcs_limited_desc$"
  
- z_pr_d_pop_slaved_5:0 "$z_pr$: §YSlavery§! Migrating Pop/Manpower"
- z_pr_d_pop_slaved_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_5:0 "$z_pr$：§YSlavery§! Specis Composition"
+ z_pr_d_pop_slaved_5_desc:0 "$z_pr_dec_spcs_slaved_desc$"
  z_pr_d_pop_slaved_10:0 "$z_pr_d_pop_slaved_5$"
- z_pr_d_pop_slaved_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_10_desc:0 "$z_pr_dec_spcs_slaved_desc$"
  z_pr_d_pop_slaved_15:0 "$z_pr_d_pop_slaved_5$"
- z_pr_d_pop_slaved_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_15_desc:0 "$z_pr_dec_spcs_slaved_desc$"
  z_pr_d_pop_slaved_20:0 "$z_pr_d_pop_slaved_5$"
- z_pr_d_pop_slaved_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_20_desc:0 "$z_pr_dec_spcs_slaved_desc$"
  z_pr_d_pop_slaved_25:0 "$z_pr_d_pop_slaved_5$"
- z_pr_d_pop_slaved_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_25_desc:0 "$z_pr_dec_spcs_slaved_desc$"
 
 ###_[核心模块]
- z_pr_tips_d_core_all:0 "Implements core features of $z_pr$, including controlling building slots expansion and popluation growth rate.\nManpower and many other factors determine growth rate, which follows normal distribution before the carrying capacity of the planet is reached. The manpower upperbound is determined by factors such as planet size.\n§YCapital planet starts with §G2§!  additional building slots."
+ z_pr_tips_d_core_all:0 "Implements core features of $z_pr$, including controlling building slots expansion and popluation growth rate.\nManpower and many other factors determine growth rate, which follows normal distribution before the carrying capacity of the planet is reached. The manpower upperbound is determined by factors such as planet size.\n§YCapital planet provides extra §G2§! slots.§!"
  z_pr_d_core:0 "$z_pr$: §YCore Module§!"
  z_pr_d_core_desc:0 "$z_pr_tips_d_core_all$\n§YEach built district provides §G0.5§! §Yextra building slot, with the maximum capped at §G18§! §Yslots.§!"
  z_pr_d_core_plus:0 "$z_pr_d_core$"
@@ -154,7 +150,7 @@
  z_pr_d_core_no:0 "$z_pr_d_core$"
  z_pr_d_core_no_desc:0 "$z_pr_tips_d_core_all$\n§YEach built district provides §G0.25§! §Yextra building slot, with the maximum capped at §G8§! slots, $origin_void_dwellers$ provides §G2§! §Yextra building slot.§!"
  z_pr_d_core_mod:0 "$z_pr_d_core$"
- z_pr_d_core_mod_desc:0 "$z_pr_tips_d_core_all$\n§YEach built district provides §G1§! §Yextra building slot, with the maximum capped at §G28§! §Yslots.§!"
+ z_pr_d_core_mod_desc:0 "$z_pr_tips_d_core_all$\n§YEach built district provides §G1§! §Yextra building slot, with the maximum capped at §G24§! §Yslots.§!"
 #_vanilla
  z_pr_d_v_core:0 "$z_pr_d_core$"
  z_pr_d_v_core_desc:0 "$z_pr_tips_d_core_all$\n§YEach built district provides §G0.33§! §Yextra building slot, with the maximum capped at §G7§! §Yslots.§!"
@@ -165,33 +161,33 @@
  
  
 #_[维护_加成]
-## 星球产出
  z_pr_d_production: "$z_pr$: §BPlanet Production§!"   
+ # 星球产出
  z_pr_d_production_desc:0 "More manpower means more output, but also means higher upkeep. \nWhen §GTotal Manpower§! is lower than §G$z_pr_res_post_0$§! the production efficiency however is decreased. While more buildings and districts would lead to more §G$z_pr_res_post_0$§!.\n$z_pr_tips_rule_production_bonus$"
  z_pr_d_upkeep: "$z_pr$: Upkeep"
  z_pr_d_upkeep_desc:0 "Just like energy is conversed in a closed system, production requires upkeep. Greater the manpower is, higher the upkeep would be."
- z_pr_d_bonus_1e: "$z_pr$: £energy£§Y$energy$§!Production Bonus"
+ z_pr_d_bonus_1e:0 "$z_pr$：£energy£§Y$energy$§!Production Bonus"
  z_pr_d_bonus_1e_desc:0 "Higher manpower means higher production bonus. When §GTotal Manpower§! is lower than §G$z_pr_res_post_0$§! the production efficiency however is decreased. While more buildings and districts would lead to more §G$z_pr_res_post_0$§!.\n$z_pr_tips_rule_production_bonus$"
 
- z_pr_d_bonus_1f: "$z_pr$: §HFood§! Production Bonus"
+ z_pr_d_bonus_1f:0 "$z_pr$：§HFood§! Production Bonus"
  z_pr_d_bonus_1f_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_1m: "$z_pr$: §HMinerals§! Production Bonus"
+ z_pr_d_bonus_1m:0 "$z_pr$：§HMinerals§! Production Bonus"
  z_pr_d_bonus_1m_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_2a: "$z_pr$: §YAlloys§! Production Bonus"
+ z_pr_d_bonus_2a:0 "$z_pr$：§YAlloys§! Production Bonus"
  z_pr_d_bonus_2a_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_2c: "$z_pr$: §YConsumer goods§! Production Bonus"
+ z_pr_d_bonus_2c:0 "$z_pr$：§YConsumer goods§! Production Bonus"
  z_pr_d_bonus_2c_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_3n: "$z_pr$: §GAdvanced Resources§! Production Bonus"
+ z_pr_d_bonus_3n:0 "$z_pr$：§GAdvanced Resources§! Production Bonus"
  z_pr_d_bonus_3n_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_3r: "$z_pr$: §GStrategic Resources§! Production Bonus"
+ z_pr_d_bonus_3r:0 "$z_pr$：§GStrategic Resources§! Production Bonus"
  z_pr_d_bonus_3r_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_rp: "$z_pr$: §BPhysics Research§! Production Bonus"
+ z_pr_d_bonus_rp:0 "$z_pr$：§BPhysics Research§! Production Bonus"
  z_pr_d_bonus_rp_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_rs: "$z_pr$: §BSociety Research§! Production Bonus"
+ z_pr_d_bonus_rs:0 "$z_pr$：§BSociety Research§! Production Bonus"
  z_pr_d_bonus_rs_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_re: "$z_pr$: §BEngineering Research§! Production Bonus"
+ z_pr_d_bonus_re:0 "$z_pr$：§BEngineering Research§! Production Bonus"
  z_pr_d_bonus_re_desc:0 "$z_pr_d_bonus_1e_desc$"
- z_pr_d_bonus_ru: "$z_pr$: §BUnity§! Production Bonus"
+ z_pr_d_bonus_ru:0 "$z_pr$：§BUnity§! Production Bonus"
  z_pr_d_bonus_ru_desc:0 "$z_pr_d_bonus_1e_desc$"
  
 #_[ai建筑]
@@ -214,7 +210,7 @@
  z_pr_dstr_forge:0 "Forge District"
  z_pr_dstr_forge_plural:0 "$z_pr_dstr_forge$"
  z_pr_dstr_forge_desc:0 "$z_pr_dstr_forge$ is a special type of urban district, which outputs alloys"
- district_arcology_housing_gestalt:0 "Gestalt Arcology" 
+ district_arcology_housing_gestalt:0 "Gestalt Arcology"
  #"单元理想城"
  district_arcology_housing_gestalt_plural:0 "$district_arcology_housing_gestalt$"
  district_arcology_housing_gestalt_desc:0 "$district_arcology_housing_desc$"
@@ -306,7 +302,7 @@
  #_[research_bldn]
  z_pr_tips_bldn_institute: "$z_tips_bouns_cat_rp$ $z_tips_bouns_common$ +12%\n$z_tips_bouns_cat_re$ $z_tips_bouns_common$ 12%\n$z_tips_bouns_cat_rs$ $z_tips_bouns_common$ +12%"
  z_pr_tips_bldn_supercomputer: "$z_pr_tips_bldn_institute$"
- 
+
 
 
 ###_[pr建筑]	######################################################################
@@ -372,7 +368,7 @@
 #_[m维护消耗]
 #_d
  z_pr_d_manpower_cost: "$z_pr$: §HManpower Upkeep§!"  
- #"$z_pr$: §H人力维护消耗§!"
+ #"$z_pr$: §H人力维护消耗§!"                               
  z_pr_d_manpower_cost_desc: "More §BManpower§! means higher §HUpkeep Cost§!, which is determined based on the percentage of different species on the planet.\nOrganic Pop consumes £food£§G$food$§!\nLithoid Pop consumes §RMinerals§!\nMachine Pop consumes §YEnergy§!\nAll non-gestalt pop requires extra §HConsumer Goods§!"
  mod_z_pr_production_static_food_upkeep_add: "Upkeep Cost: £food£§G$food$§!"
  mod_z_pr_production_static_minerals_upkeep_add: "Upkeep Cost: §RMinerals§!"
