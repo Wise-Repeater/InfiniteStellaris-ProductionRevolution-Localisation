@@ -1,0 +1,368 @@
+﻿l_simp_chinese:
+
+#_[core]
+#_[pr资源]
+#_[pr职位]
+#_[pr地块]
+#_[pr区划]
+#_[v建筑] v建筑_产业产出/v建筑_产业维护/v建筑_tips
+#_[pr建筑]
+#_[mod_pop_checker]
+#_[mod_ai建筑槽]
+#_[m维护消耗]
+#_[test]
+
+
+
+
+###_[core]   game_start/var ######################################################################
+ z_pr:0 "产业革命"
+ z_pr_tips_rule_production_bonus:0 "星球产业加成规则：§G人力加成§!((人力总量+流动人口) × 额外修正(破坏度+星球经济政策) / $z_pr_res_post_0$) × $z_tips_bouns_common$(科技+国策+传统+飞升+修正+建筑+星球特性等) × $z_tips_bouns_sp$(物种构成+殖民地类型+经济政策)\n当人力小于$z_pr_res_post_0$时，产业会受到负修正，但是在后期这些负修正可能被其他科技或国家修正填平。\n当人力大于$z_pr_res_post_0$时，产业会受到正修正，也就是人力越多加成越高。\n受产业加成或人力加成影响的领域包括产业资源产出，产业维护消耗，星球维护值，贸易值，管理值，行星防卫军数量，星球海军上限修正等。"
+ z_pr_post:0 "§B产业参数§!"
+ z_pr_production:0 "§G星球产业§!"
+ z_pr_production_static:0 "§H人力维护§!"
+#_[game_start]
+ z_pr_evt_fault:0 "无尽群星框架未安装"
+ z_pr_evt_fault_desc:0 "本mod的部分功能将会失效，且游戏构架可能出现重大错误。"
+#_[var]
+ z_pr_var_plnt_pop_manpower:0 "§B人力§!§G人口§!总量"
+
+
+
+
+###_[pr资源]  ######################################################################
+ z_pr_res_post_0:0 "§B生产基数§!"
+ z_pr_res_post:0 "$z_pr$：$z_pr_res_post_0$"
+ z_pr_res_post_desc:0 "$z_pr_res_post_0$表示当前星球人力可用的岗位数量。\n当人力小于$z_pr_res_post_0$时，产出会受到减成。\n当人力大于$z_pr_res_post_0$时，产出会受到加成。\n当人力超出$z_pr_res_post_0$过多时，会因为生产密度过高而削减加成。"
+ z_pr_res_navy_0:0 "§B海军工业§!"
+ z_pr_res_navy:0 "$z_pr$：$z_pr_res_navy_0$"
+ z_pr_res_navy_desc:0 "每一点$z_pr_res_navy_0$都会转化为等量的海军容量。"
+ z_pr_res_admin_0:0 "§B管理值§!"
+ z_pr_res_admin:0 "$z_pr$：$z_pr_res_admin_0$"
+ z_pr_res_admin_desc:0 "每一点$z_pr_res_admin_0$都会转化为等量的帝国规模上限。"
+ z_pr_res_guard_0:0 "§B行星防卫军§!"
+ z_pr_res_guard:0 "$z_pr$：$z_pr_res_guard_0$"
+ z_pr_res_guard_desc:0 "每一点$z_pr_res_guard_0$都会转化为等量的防卫部队。"
+
+
+
+
+###_[pr职位]  ######################################################################
+#_pop_cat
+ pop_cat_z_pr_freeman:0 "流动人口"
+ pop_cat_z_pr_freeman_plural:0 "$pop_cat_z_pr_freeman$"
+ pop_cat_z_pr_freeman_desc:0 "流浪者，旅行者或者是来寻找机会的人群，它们居无定所，随时可能会移民到别处。"
+ 
+#_job
+ job_z_pr_freeman_admin:0 "核心流动人口"
+ job_z_pr_freeman_admin_plural:0 "核心流动人口"
+ job_z_pr_freeman_admin_desc:0 "核心管理阶层，使星球产业机能得以正常运行。"
+ mod_job_z_pr_freeman_admin_add:0 "核心流动人口"
+ 
+ job_z_pr_freeman_full:0 "公民流动人口"
+ job_z_pr_freeman_full_plural:0 "公民流动人口"
+ job_z_pr_freeman_full_desc:0 "$pop_cat_z_pr_freeman_desc$"
+ mod_job_z_pr_freeman_full_add:0 "公民流动人口"
+ 
+ job_z_pr_freeman_limited:0 "暂住流动人口"
+ job_z_pr_freeman_limited_plural:0 "暂住流动人口"
+ job_z_pr_freeman_limited_desc:0 "$pop_cat_z_pr_freeman_desc$"
+ mod_job_z_pr_freeman_limited_add:0 "暂住流动人口"
+ 
+ job_z_pr_freeman_slaved:0 "劳务流动人口"
+ job_z_pr_freeman_slaved_plural:0 "劳务流动人口"
+ job_z_pr_freeman_slaved_desc:0 "$pop_cat_z_pr_freeman_desc$"
+ mod_job_z_pr_freeman_slaved_add:0 "劳务流动人口"
+
+
+
+
+###_[pr地块]	流动人口/增长率控制/维护_加成/ai建筑	###################################################
+#_[流动人口]
+ z_pr_d_pop_standard_5:0 "$z_pr$：§B标准型§!流动人口/人力"
+ z_pr_d_pop_standard_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_10:0 "$z_pr_d_pop_standard_5$"
+ z_pr_d_pop_standard_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_15:0 "$z_pr_d_pop_standard_5$"
+ z_pr_d_pop_standard_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_20:0 "$z_pr_d_pop_standard_5$"
+ z_pr_d_pop_standard_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_standard_25:0 "$z_pr_d_pop_standard_5$"
+ z_pr_d_pop_standard_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ 
+ z_pr_d_pop_full_5:0 "$z_pr$：§R纯血型§!流动人口/人力"
+ z_pr_d_pop_full_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_10:0 "$z_pr_d_pop_full_5$"
+ z_pr_d_pop_full_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_15:0 "$z_pr_d_pop_full_5$"
+ z_pr_d_pop_full_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_20:0 "$z_pr_d_pop_full_5$"
+ z_pr_d_pop_full_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_full_25:0 "$z_pr_d_pop_full_5$"
+ z_pr_d_pop_full_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ 
+ z_pr_d_pop_full_5:0 "$z_pr$：§G共荣型§!流动人口/人力"
+ z_pr_d_pop_limited_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_10:0 "$z_pr_d_pop_limited_5$"
+ z_pr_d_pop_limited_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_15:0 "$z_pr_d_pop_limited_5$"
+ z_pr_d_pop_limited_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_20:0 "$z_pr_d_pop_limited_5$"
+ z_pr_d_pop_limited_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_limited_25:0 "$z_pr_d_pop_limited_5$"
+ z_pr_d_pop_limited_25_desc:0 "$job_z_pr_freeman_full_desc$"
+ 
+ z_pr_d_pop_slaved_5:0 "$z_pr$：§Y奴役型§!流动人口/人力"
+ z_pr_d_pop_slaved_5_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_10:0 "$z_pr_d_pop_slaved_5$"
+ z_pr_d_pop_slaved_10_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_15:0 "$z_pr_d_pop_slaved_5$"
+ z_pr_d_pop_slaved_15_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_20:0 "$z_pr_d_pop_slaved_5$"
+ z_pr_d_pop_slaved_20_desc:0 "$job_z_pr_freeman_full_desc$"
+ z_pr_d_pop_slaved_25:0 "$z_pr_d_pop_slaved_5$"
+ z_pr_d_pop_slaved_25_desc:0 "$job_z_pr_freeman_full_desc$"
+
+###_[核心模块]
+ z_pr_tips_d_core_all:0 "实现$z_pr$的各项核心功能，包括建筑槽修正和人口增长率控制。\n星球人力等诸多因素共同影响着人口增长率，在到达星球上限之前，增长率呈现正态分布。而星球人力上限则由星球大小等诸多因素所决定。\n§Y首都行星提供额外2个建筑槽。"
+ z_pr_d_core:0 "$z_pr$：§Y核心模块§!"
+ z_pr_d_core_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.5个额外建筑槽，最多解锁18个额外建筑槽。§!"
+ z_pr_d_core_plus:0 "$z_pr_d_core$"
+ z_pr_d_core_plus_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.75个额外建筑槽，最多解锁24个额外建筑槽。§!"
+ z_pr_d_core_full:0 "$z_pr_d_core$"
+ z_pr_d_core_full_desc:0 "$z_pr_tips_d_core_all$\n§Y高级世界，默认解锁全部建筑槽。§!"
+ z_pr_d_core_no:0 "$z_pr_d_core$"
+ z_pr_d_core_no_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.25个额外建筑槽，最多解锁8个额外建筑槽，$origin_void_dwellers$提供额外2个建筑槽。§!"
+ z_pr_d_core_mod:0 "$z_pr_d_core$"
+ z_pr_d_core_mod_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供1个额外建筑槽，最多解锁28个额外建筑槽。§!"
+#_vanilla
+ z_pr_d_v_core:0 "$z_pr_d_core$"
+ z_pr_d_v_core_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.33个额外建筑槽，最多解锁7个额外建筑槽。§!"
+ z_pr_d_v_core_plus:0 "$z_pr_d_core$"
+ z_pr_d_v_core_plus_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.5个额外建筑槽，最多解锁7个额外建筑槽。§!"
+ z_pr_d_v_core_no:0 "$z_pr_d_core$"
+ z_pr_d_v_core_no_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供0.25个额外建筑槽，最多解锁5个额外建筑槽，$origin_void_dwellers$提供额外2个建筑槽。§!"
+ 
+ 
+###_[维护_加成]
+ z_pr_d_production:0 "$z_pr$：§B星球产出§!"
+ z_pr_d_production_desc:0 "越多人力意味着越多产出，不过能量守恒，这也意味着越多的维护消耗。\n§G人力总量§!低于星球§G$z_pr_res_post_0$§!反而会带来负产出，而越多的建筑和区划往往意味着越多的§G$z_pr_res_post_0$§!。\n$z_pr_tips_rule_production_bonus$"
+ z_pr_d_upkeep:0 "$z_pr$：维护成本"
+ z_pr_d_upkeep_desc:0 "能量守恒，产出必然需要维护消耗，越多的人力意味着越多的维护消耗。"
+ z_pr_d_bonus_1e:0 "$z_pr$：£energy£§Y$energy$§!产出加成"
+ z_pr_d_bonus_1e_desc:0 "越多的人力意味着越高的产出加成，§G人力总量§!低于星球§G$z_pr_res_post_0$§!反而会带来负产出，而越多的建筑和区划往往意味着越多的§G$z_pr_res_post_0$§!。\n$z_pr_tips_rule_production_bonus$"
+ z_pr_d_bonus_1f:0 "$z_pr$：§H食物§!产出加成"
+ z_pr_d_bonus_1f_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_1m:0 "$z_pr$：§H矿物§!产出加成"
+ z_pr_d_bonus_1m_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_2a:0 "$z_pr$：§Y合金§!产出加成"
+ z_pr_d_bonus_2a_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_2c:0 "$z_pr$：§Y消费品§!产出加成"
+ z_pr_d_bonus_2c_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_3n:0 "$z_pr$：§G高级资源§!产出加成"
+ z_pr_d_bonus_3n_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_3r:0 "$z_pr$：§G稀有资源§!产出加成"
+ z_pr_d_bonus_3r_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_rp:0 "$z_pr$：§B物理科研§!产出加成"
+ z_pr_d_bonus_rp_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_rs:0 "$z_pr$：§B社会科研§!产出加成"
+ z_pr_d_bonus_rs_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_re:0 "$z_pr$：§B工程科研§!产出加成"
+ z_pr_d_bonus_re_desc:0 "$z_pr_d_bonus_1e_desc$"
+ z_pr_d_bonus_ru:0 "$z_pr$：§B凝聚力§!产出加成"
+ z_pr_d_bonus_ru_desc:0 "$z_pr_d_bonus_1e_desc$"
+ 
+#_[ai建筑]
+ z_pr_d_ai_building_vanilla:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_d_ai_building_vanilla_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+ z_pr_d_ai_building_adv:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_d_ai_building_adv_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+ z_pr_d_ai_building_supreme:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_d_ai_building_supreme_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+
+
+
+
+###_[pr区划]	######################################################################
+ z_pr_dstr_checker:0 "$z_pr_mod_pop_checker$"
+ z_pr_dstr_checker_desc:0 "$z_pr_mod_pop_checker_desc$"
+ z_pr_dstr_industrial:0 "工业区"
+ z_pr_dstr_industrial_plural:0 "$z_pr_dstr_industrial$"
+ z_pr_dstr_industrial_desc:0 "$z_pr_dstr_industrial$是城市区的一种，能够产出合金与消费品。"
+ z_pr_dstr_forge:0 "锻造区"
+ z_pr_dstr_forge_plural:0 "$z_pr_dstr_forge$"
+ z_pr_dstr_forge_desc:0 "$z_pr_dstr_forge$是城市区的一种，能够产出合金。"
+ district_arcology_housing_gestalt:0 "单元理想城"
+ district_arcology_housing_gestalt_plural:0 "$district_arcology_housing_gestalt$"
+ district_arcology_housing_gestalt_desc:0 "$district_arcology_housing_desc$"
+
+
+
+
+###_[v建筑]	######################################################################
+ z_tips_bouns_common:0 "产业§Y基础加成§!"
+ z_tips_bouns_sp:0 "产业§H特殊加成§!"
+ z_tips_bouns_cat_1e:0 "£energy£§Y$energy$§!"
+ z_tips_bouns_cat_1m:0 "£minerals£§R$minerals$§!"
+ z_tips_bouns_cat_1f:0 "£food£§G$food$§!"
+ z_tips_bouns_cat_2a:0 "£alloys£§M$alloys$§!"
+ z_tips_bouns_cat_2c:0 "£consumer_goods£§P$consumer_goods$§!"
+ z_tips_bouns_cat_3n:0 "§S高级工业§!"
+ z_tips_bouns_cat_3r:0 "§Y稀有资源§!"
+ z_tips_bouns_cat_rp:0 "£physics£§B$physics_research$§!"
+ z_tips_bouns_cat_re:0 "£engineering£§H$engineering_research$§!"
+ z_tips_bouns_cat_rs:0 "£society£§G$society_research$§!"
+ z_tips_bouns_cat_ru:0 "£unity£§E$unity$§!"
+
+##_[v建筑_产业产出]
+ mod_z_pr_production_energy_produces_add:0 "£energy£§Y$energy$§!产业"
+ mod_z_pr_production_minerals_produces_add:0 "£minerals£§R$minerals$§!产业"
+ mod_z_pr_production_food_produces_add:0 "£food£§G$food$§!产业"
+ mod_z_pr_production_alloys_produces_add:0 "£alloys£§M$alloys$§!产业"
+ mod_z_pr_production_consumer_goods_produces_add:0 "£consumer_goods£§P$consumer_goods$§!产业"
+ mod_z_pr_production_volatile_motes_produces_add:0 "§B$volatile_motes$§!产业"
+ mod_z_pr_production_exotic_gases_produces_add:0 "§B$exotic_gases$§!产业"
+ mod_z_pr_production_rare_crystals_produces_add:0 "§B$rare_crystals$§!产业"
+#_research
+ mod_z_pr_production_physics_research_produces_add:0 "£physics£§B$physics_research$§!产业"
+ mod_z_pr_production_engineering_research_produces_add:0 "£engineering£§H$engineering_research$§!产业"
+ mod_z_pr_production_society_research_produces_add:0 "£society£§G$society_research$§!产业"
+ mod_z_pr_production_influence_produces_add:0 "§P$influence$§!产业"
+ mod_z_pr_production_unity_produces_add:0 "£unity£§E$unity$§!产业"
+#_rare
+ mod_z_pr_production_sr_living_metal_produces_add:0 "§E$sr_living_metal$§!产业"
+ mod_z_pr_production_sr_zro_produces_add:0 "§E$sr_zro$§!产业"
+ mod_z_pr_production_sr_dark_matter_produces_add:0 "§E$sr_dark_matter$§!产业"
+ mod_z_pr_production_nanites_produces_add:0 "§E$nanites$§!产业"
+ mod_z_pr_production_minor_artifacts_produces_add:0 "§P$minor_artifacts$§!产业"
+
+##_[v建筑_产业维护]
+ mod_z_pr_production_energy_upkeep_add:0 "£energy£§Y$energy$§!维护"
+ mod_z_pr_production_minerals_upkeep_add:0 "£minerals£§R$minerals$§!维护"
+ mod_z_pr_production_food_upkeep_add:0 "£food£§G$food$§!维护"
+ mod_z_pr_production_alloys_upkeep_add:0 "£alloys£§M$alloys$§!维护"
+ mod_z_pr_production_consumer_goods_upkeep_add:0 "£consumer_goods£§P$consumer_goods$§!维护"
+ mod_z_pr_production_volatile_motes_upkeep_add:0 "§B$volatile_motes$§!维护"
+ mod_z_pr_production_exotic_gases_upkeep_add:0 "§B$exotic_gases$§!维护"
+ mod_z_pr_production_rare_crystals_upkeep_add:0 "§B$rare_crystals$§!维护"
+#_research
+ mod_z_pr_production_physics_research_upkeep_add:0 "£physics£§B$physics_research$§!维护"
+ mod_z_pr_production_engineering_research_upkeep_add:0 "£engineering£§H$engineering_research$§!维护"
+ mod_z_pr_production_society_research_upkeep_add:0 "£society£§G$society_research$§!维护"
+ mod_z_pr_production_influence_upkeep_add:0 "§P$influence$§!维护"
+ mod_z_pr_production_unity_upkeep_add:0 "£unity£§E$unity$§!维护"
+#_rare
+ mod_z_pr_production_sr_living_metal_upkeep_add:0 "§E$sr_living_metal$§!维护"
+ mod_z_pr_production_sr_zro_upkeep_add:0 "§E$sr_zro$§!维护"
+ mod_z_pr_production_sr_dark_matter_upkeep_add:0 "§E$sr_dark_matter$§!维护"
+ mod_z_pr_production_nanites_upkeep_add:0 "§E$nanites$§!维护"
+ mod_z_pr_production_minor_artifacts_upkeep_add:0 "§P$minor_artifacts$§!维护"
+
+##_[v建筑_tips]
+#_[v_resource_bldn]
+ z_pr_tips_bldn_food_processing_facility:0 "所有$district_farming$的£food£$food$产出提升，$z_pr_res_post_0$+1。\n$z_tips_bouns_cat_1f$$z_tips_bouns_common$+12%"
+ z_pr_tips_bldn_food_processing_center:0 "所有$district_farming$的£food£$food$产出提升，$z_pr_res_post_0$+2。\n$z_tips_bouns_cat_1f$$z_tips_bouns_common$+20%"
+ z_pr_tips_bldn_mineral_purification_plant:0 "所有$district_mining$的£minerals£$minerals$产出提升，$z_pr_res_post_0$+1。\n$z_tips_bouns_cat_1m$$z_tips_bouns_common$+12%"
+ z_pr_tips_bldn_mineral_purification_hub:0 "所有$district_mining$的£minerals£$minerals$产出提升，$z_pr_res_post_0$+2。\n$z_tips_bouns_cat_1m$$z_tips_bouns_common$+20%"
+ z_pr_tips_bldn_energy_grid:0 "所有$district_generator$的£energy£$energy$产出提升，$z_pr_res_post_0$+1。\n$z_tips_bouns_cat_1e$$z_tips_bouns_common$+12%"
+ z_pr_tips_bldn_energy_nexus:0 "所有$district_generator$的£energy£$energy$产出提升，$z_pr_res_post_0$+2。\n$z_tips_bouns_cat_1e$$z_tips_bouns_common$+20%"
+#_[v_manufacturing_bldn]
+ z_pr_tips_bldn_manufacturing:0 "\n在没有工业区的星球将获得额外的产出和$z_pr_res_post_0$。"
+ z_pr_tips_bldn_foundry_1:0 "$z_tips_bouns_cat_2a$$z_tips_bouns_common$+12%$z_pr_tips_bldn_manufacturing$"
+ z_pr_tips_bldn_foundry_2:0 "所有$z_pr_dstr_industrial$的£alloys£$alloys$产出与生产消耗提升，$z_pr_res_post_0$+1。\n$z_tips_bouns_cat_2a$$z_tips_bouns_common$+16%$z_pr_tips_bldn_manufacturing$"
+ z_pr_tips_bldn_foundry_3:0 "所有$z_pr_dstr_industrial$的£alloys£$alloys$产出与生产消耗提升，$z_pr_res_post_0$+2。\n$z_tips_bouns_cat_2a$$z_tips_bouns_common$+20%$z_pr_tips_bldn_manufacturing$"
+ z_pr_tips_bldn_factory_1:0 "$z_tips_bouns_cat_2c$$z_tips_bouns_common$+12%$z_pr_tips_bldn_manufacturing$"
+ z_pr_tips_bldn_factory_2:0 "所有$z_pr_dstr_industrial$的£consumer_goods£$consumer_goods$产出与生产消耗提升，$z_pr_res_post_0$+1。\n$z_tips_bouns_cat_2c$$z_tips_bouns_common$+16%$z_pr_tips_bldn_manufacturing$"
+ z_pr_tips_bldn_factory_3:0 "所有$z_pr_dstr_industrial$的£consumer_goods£$consumer_goods$产出与生产消耗提升，$z_pr_res_post_0$+2。\n$z_tips_bouns_cat_2c$$z_tips_bouns_common$+20%$z_pr_tips_bldn_manufacturing$"
+ #_产品中心
+ z_pr_tips_bldn_production_center:0 "$z_tips_bouns_cat_2a$$z_tips_bouns_common$+12%\n$z_tips_bouns_cat_2c$$z_tips_bouns_common$+12%"
+ #_[research_bldn]
+ z_pr_tips_bldn_institute:0 "$z_tips_bouns_cat_rp$$z_tips_bouns_common$+12%\n$z_tips_bouns_cat_re$$z_tips_bouns_common$+12%\n$z_tips_bouns_cat_rs$$z_tips_bouns_common$+12%"
+ z_pr_tips_bldn_supercomputer:0 "$z_pr_tips_bldn_institute$"
+ 
+
+
+###_[pr建筑]	######################################################################
+
+
+
+
+###_[mod]   ######################################################################
+#_misc
+ mod_z_pr_post_z_pr_res_post_produces_add:0 "$z_pr_res_post_0$"
+ mod_z_pr_post_z_pr_res_post_produces_mult:0 "$z_pr_res_post_0$"
+ mod_z_pr_post_z_pr_res_navy_produces_add:0 "$z_pr_res_navy_0$"
+ mod_z_pr_post_z_pr_res_navy_produces_mult:0 "$z_pr_res_navy_0$"
+ mod_z_pr_post_z_pr_res_admin_produces_add:0 "$z_pr_res_admin_0$"
+ mod_z_pr_post_z_pr_res_admin_produces_mult:0 "$z_pr_res_admin_0$"
+ mod_z_pr_post_z_pr_res_guard_produces_add:0 "$z_pr_res_guard_0$"
+ mod_z_pr_post_z_pr_res_guard_produces_mult:0 "$z_pr_res_guard_0$"
+
+ mod_z_pr_production_static_alloys_upkeep_add:0 "$z_pr_production_static$维护消耗：$alloys$"
+ 
+ mod_z_pr_production_upkeep_mult:0 "维护总加成"
+ mod_z_pr_production_produces_mult:0 "产业总加成"
+ mod_z_pr_production_energy_produces_mult:0 "£energy£§Y$energy$§!产业额外加成"
+ mod_z_pr_production_minerals_produces_mult:0 "§R矿物§!产业额外加成"
+ mod_z_pr_production_food_produces_mult:0 "§G食物§!产业额外加成"
+ mod_z_pr_production_alloys_produces_mult:0 "§M合金§!产业额外加成"
+ mod_z_pr_production_consumer_goods_produces_mult:0 "§P消费品§!产业额外加成"
+ mod_z_pr_production_rare_crystals_produces_mult:0 "§S稀有水晶§!产业额外加成"
+ mod_z_pr_production_exotic_gases_produces_mult:0 "§S奇异瓦斯§!产业额外加成"
+ mod_z_pr_production_volatile_motes_produces_mult:0 "§S易爆微粒§!产业额外加成"
+ mod_z_pr_production_physics_research_produces_mult:0 "§B物理学科研§!产业额外加成"
+ mod_z_pr_production_engineering_research_produces_mult:0 "§H工程学科研§!产业额外加成"
+ mod_z_pr_production_society_research_produces_mult:0 "§G社会学科研§!产业额外加成"
+ mod_z_pr_production_unity_produces_mult:0 "§E凝聚力§!产业额外加成"
+ mod_z_pr_production_influence_produces_mult:0 "§Y影响力§!产业修正"
+ mod_z_pr_production_minor_artifacts_produces_mult:0 "§Y小型文物§!产业修正"
+ 
+ 
+#_[mod_pop_checker]
+ z_pr_mod_pop_checker:0 "$z_pr$：§G检测§!"
+ z_pr_mod_pop_checker_desc:0 "快速检测辅助系统！"
+
+
+
+
+#_[mod_ai建筑槽]
+ z_pr_mod_cntr_building_slot_start:0 "$z_pr$：§B开局建筑修整§!"
+ z_pr_mod_cntr_building_slot_start_desc:0 "辅助功能"
+ z_pr_mod_cntr_building_slot_6:0 "$z_pr$：§GAI建筑槽§!"
+ z_pr_mod_cntr_building_slot_6_desc:0 "他们是AI，他们当然可以！"
+ z_pr_mod_cntr_building_slot_12:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_mod_cntr_building_slot_12_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+ z_pr_mod_cntr_building_slot_18:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_mod_cntr_building_slot_18_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+ z_pr_mod_cntr_building_slot_24:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_mod_cntr_building_slot_24_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+ z_pr_mod_cntr_building_slot_36:0 "$z_pr_mod_cntr_building_slot_6$"
+ z_pr_mod_cntr_building_slot_36_desc:0 "$z_pr_mod_cntr_building_slot_6_desc$"
+
+
+
+
+#_[m维护消耗]
+#_d
+ z_pr_d_manpower_cost:0 "$z_pr$：§H人力维护消耗§!"
+ z_pr_d_manpower_cost_desc:0 "越多的§B人力§!意味着越多的§H维护消耗§!，而根据星球物种构成的比例，维护将会消耗不同的资源。\n有机物种消耗§G食物§!\n石质物种消耗§R矿物§!\n机械物种消耗§Y能量§!\n非格式塔物种额外消耗§H消费品§!"
+ mod_z_pr_production_static_food_upkeep_add:0 "维护消耗：§G食物§!"
+ mod_z_pr_production_static_minerals_upkeep_add:0 "维护消耗：§R矿物§!"
+ mod_z_pr_production_static_energy_upkeep_add:0 "维护消耗：§Y能量§!"
+ mod_z_pr_production_static_consumer_goods_upkeep_add:0 "维护消耗：§H消费品§!"
+ 
+
+
+
+
+#_[test]
+ z_pr_test_execute_3:0 "执行3"
+ z_pr_test_execute_5:0 "执行5"
+ z_pr_test_execute_10:0 "执行10"
+ z_pr_test_manpower_10:0 "人力10"
+ z_pr_test_manpower_20:0 "人力20"
+ z_pr_test_manpower_40:0 "人力40"
+ z_pr_tips_test_bldn_max:0 "[event_target:z_fw_tgt_global_event.z_pr_var_bldn_max]"
+ 
+ 
+

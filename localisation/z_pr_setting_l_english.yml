@@ -1,0 +1,82 @@
+﻿l_english:
+
+#_[全局设置_spcs]
+#_[星球设置_spcs]
+#_[星球参数检测]
+#_[指南]
+#_[飞升]  第一次产业革命/扩大化/集成化
+
+
+
+
+###_[开始通知]  ############################################################
+ z_pr_core.102_title:0 "$z_pr$ MOD Activated"
+ z_pr_core.102_desc:0 "When you see this pop-up window means that the §B$z_pr$§! has been successfully installed.\nDue to the new building slot unlock methods from 2.9 plan has been adopted in this MOD, the pops will no longer unlock building slots. Building slots will be unlocked with the construction of districts, see $z_pr_d_core$ in deposits list for more information. What's more, §BCapital Buildings/ $district_city$/ $district_hive$/ $district_nexus$"§! can offer extra buildings slots.\n§HNote: If this MOD is added to an old save, you will encounter large-scaled building devastation, which cannot be avoided.§!\nIf you have any other questions, please open the setting panel of this MOD in the Infinite Framework setting Panel, and click on the player guide on the upper right corner."
+ z_pr_core.102_opt_false:0 "I'm not quite understand."
+ z_pr_core.102_opt_read:0 "I got it."
+
+
+
+
+###_[全局设置_spcs]    ############################################################
+ z_pr_evt_setting:0 "§B$z_pr$:§! Settings"
+ z_pr_evt_setting_desc:0 "Playable Country---[root.z_playable_country_var]\nColonies---[root.z_colony_var]\nGalaxy Population---[root.z_total_pop_var]\nGalaxy Unemployed Pops---[root.z_total_pop_unemployed_var]\n"
+ z_pr_tips_setting:0 "Set the global checking frequency, and it is recommended not to change it.\nEach time global checking executed will update basic production parameters as preparation for follow-up calculating. The higher the frequency, the more timely production changes will take effect."
+ z_pr_option_setting_rate_standard:0 "Checking Frequency(now) §BStandard§!/ once every 4 months"
+ z_pr_option_setting_rate_high:0 "Checking Frequency(now) §HHigh§!/ once every 2 months"
+ z_pr_option_setting_rate_low:0 "Checking Frequency(now) §GLow§!/ once every 6 months"
+ z_pr_tips_setting_ai_construction:0 "A standalone system that assists AI in planet construction, it is recommended to keep the default setting. Turning it off may cause the AI to be unable to construct the planet in time, thereby reducing the strength of the AI."
+ z_pr_option_setting_ai_construction_on:0 "AI Construction Assistance §BEnabled§!"
+ z_pr_option_setting_ai_construction_off:0 "AI Construction Assistance §HDisabled§!"
+
+
+
+
+###_[星球设置_spcs]    ############################################################
+ z_pr_dec_spcs_desc:0 "Show the current species policy, the species composition of this planet will slowly change in accordance with the policy."
+ z_pr_dec_spcs_standard:0 "$z_pr$: Planetary Species Policy §BStandard§!"
+ z_pr_dec_spcs_standard_desc:0 "$z_pr_dec_spcs_desc$\nBalanced composition, the most common composition mode with species with full citizenship as the core."
+ z_pr_dec_spcs_full:0 "$z_pr$: Planetary Species Policy §RPure Blood§!"
+ z_pr_dec_spcs_full_desc:0 "$z_pr_dec_spcs_desc$\nOnly allow species with full citizenship to exist, the composition mode of the Xenophobic."
+ z_pr_dec_spcs_limited:0 "$z_pr$: Planetary Species Policy §GCo-prosperity§!"
+ z_pr_dec_spcs_limited_desc:0 "$z_pr_dec_spcs_desc$\nIncrease the proportion of species with limited citizenship, and the composition mode of the Pro-foreignism."
+ z_pr_dec_spcs_slaved:0 "$z_pr$: Planetary Species Policy §YSlavery§!"
+ z_pr_dec_spcs_slaved_desc:0 "$z_pr_dec_spcs_desc$\nIncrease the proportion of slave species, the composition mode of the Authoritarian camp"
+ z_pr_tips_dec_spcs:0 "Change the planetary species policy"
+
+
+
+
+###_[星球参数检测]    ############################################################
+ z_pr_dec_plnt_var_check:0 "$z_pr$: §BPlanetary Parameter Statistic§!"
+ z_pr_dec_plnt_var_check_desc:0 "Show details of planet production parameters"
+ z_pr_tips_dec_plnt_var_check:0 "A new window pops up and displays §Ball related parameter§! to the production of this planet."
+ z_pr_plnt_check.name:0 "$z_pr_dec_plnt_var_check$"
+
+ z_pr_plnt_check.test:0 " §H上次检测§!可用职位数§H[This.z_pr_var_plnt_free_jobs]§!\n §H上次检测§!无业人口数§H[This.z_pr_var_plnt_pop_uep]§!\n §BManpower§! Capacity Base §B[This.z_pr_var_plnt_cap_manpower_base]§!\n §BManpower§!容量比例参数§G[This.z_pr_var_plnt_growth]§!\n §BManpower§!生产基数§B[This.z_pr_var_plnt_post]§!\n §BManpower§!总量§B[This.z_pr_var_plnt_manpower]§!\n §BManpower§!生产加成参数§B[This.z_pr_var_plnt_manpower_bonus]§!\n §BManpower§!维护加成参数§B[This.z_pr_var_plnt_manpower_upkeep]§!\n §BManpower§!维护加成执行参数(计算后)§B[This.z_pr_var_plnt_manpower_upkeep_execute]§!\n\n £energy£§Y$energy$§!Production Basic Bonus参数§Y[This.z_pr_var_plnt_bonus_add_1e]§!\n £energy£§Y$energy$§!Production Special Bonus参数§Y[This.z_pr_var_plnt_bonus_mult_1e]§!\n £energy£§Y$energy$§!Production Final Bonus参数§Y[This.z_pr_var_plnt_bonus_final_1e]§!\n £minerals£§R$minerals$§!Production Basic Bonus参数§R[This.z_pr_var_plnt_bonus_add_1m]§!\n £minerals£§R$minerals$§!Production Special Bonus参数§R[This.z_pr_var_plnt_bonus_mult_1m]§!\n £minerals£§R$minerals$§!Production Final Bonus参数§R[This.z_pr_var_plnt_bonus_final_1m]§!\n £food£§G$food$§!Production Basic Bonus参数§G[This.z_pr_var_plnt_bonus_add_1f]§!\n £food£§G$food$§!Production Special Bonus参数§G[This.z_pr_var_plnt_bonus_mult_1f]§!\n £food£§G$food$§!Production Final Bonus参数§G[This.z_pr_var_plnt_bonus_final_1f]§!\n £alloys£§M$alloys$§!Production Basic Bonus参数§M[This.z_pr_var_plnt_bonus_add_2a]§!\n £alloys£§M$alloys$§!Production Special Bonus参数§M[This.z_pr_var_plnt_bonus_mult_2a]§!\n £alloys£§M$alloys$§!Production Final Bonus参数§M[This.z_pr_var_plnt_bonus_final_2a]§!\n £consumer_goods£§P$consumer_goods$§!Production Basic Bonus参数§P[This.z_pr_var_plnt_bonus_add_2c]§!\n £consumer_goods£§P$consumer_goods$§!Production Special Bonus参数§P[This.z_pr_var_plnt_bonus_mult_2c]§!\n £consumer_goods£§P$consumer_goods$§!Production Final Bonus参数§P[This.z_pr_var_plnt_bonus_final_2c]§!\n §SAdvanced Industry§!Production Basic Bonus参数§S[This.z_pr_var_plnt_bonus_add_3n]§!\n §SAdvanced Industry§!Production Special Bonus参数§S[This.z_pr_var_plnt_bonus_mult_3n]§!\n §SAdvanced Industry§!Production Final Bonus参数§S[This.z_pr_var_plnt_bonus_final_3n]§!\n §YRare Resources§!Production Basic Bonus参数§Y[This.z_pr_var_plnt_bonus_add_3r]§!\n §YRare Resources§!Production Special Bonus参数§Y[This.z_pr_var_plnt_bonus_mult_3r]§!\n §YRare Resources§!Production Final Bonus参数§Y[This.z_pr_var_plnt_bonus_final_3r]§!\n £physics£§B$physics_research$§!Production Basic Bonus参数§B[This.z_pr_var_plnt_bonus_add_rp]§!\n £physics£§B$physics_research$§!Production Special Bonus参数§B[This.z_pr_var_plnt_bonus_mult_rp]§!\n £physics£§B$physics_research$§!Production Final Bonus参数§B[This.z_pr_var_plnt_bonus_final_rp]§!\n £engineering£§H$engineering_research$§!Production Basic Bonus参数§H[This.z_pr_var_plnt_bonus_add_re]§!\n £engineering£§H$engineering_research$§!Production Special Bonus参数§H[This.z_pr_var_plnt_bonus_mult_re]§!\n £engineering£§H$engineering_research$§!Production Final Bonus参数§H[This.z_pr_var_plnt_bonus_final_re]§!\n £society£§G$society_research$§!Production Basic Bonus参数§G[This.z_pr_var_plnt_bonus_add_rs]§!\n £society£§G$society_research$§!Production Special Bonus参数§G[This.z_pr_var_plnt_bonus_mult_rs]§!\n £society£§G$society_research$§!Production Final Bonus参数§G[This.z_pr_var_plnt_bonus_final_rs]§!\n £unity£§E$unity$§!Production Basic Bonus参数§E[This.z_pr_var_plnt_bonus_add_ru]§!\n £unity£§E$unity$§!Production Special Bonus参数§E[This.z_pr_var_plnt_bonus_mult_ru]§!\n £unity£§E$unity$§!Production Final Bonus参数§E[This.z_pr_var_plnt_bonus_final_ru]§!\n "
+
+ z_pr_plnt_check.desc:0 "Click anywhere in this window to exit\n\n §BManpower§! Production Base §B[This.z_pr_var_plnt_post]§!\n §BManpower§! Value §B[This.z_pr_var_plnt_manpower]§!\n\n §BManpower§! Production Bonus §B[This.z_pr_var_plnt_manpower_bonus_check]%§!\n §BManpower§! Upkeep Bonus §B[This.z_pr_var_plnt_manpower_upkeep_check]%§!\n\n £energy£§Y$energy$§!Production Basic Bonus §Y[This.z_pr_var_plnt_bonus_add_1e_check]%§!\n £energy£§Y$energy$§!Production Special Bonus §Y[This.z_pr_var_plnt_bonus_mult_1e_check]%§!\n £energy£§Y$energy$§!Production Final Bonus §Y[This.z_pr_var_plnt_bonus_final_1e_check]%§!\n £minerals£§R$minerals$§!Production Basic Bonus §R[This.z_pr_var_plnt_bonus_add_1m_check]%§!\n £minerals£§R$minerals$§!Production Special Bonus §R[This.z_pr_var_plnt_bonus_mult_1m_check]%§!\n £minerals£§R$minerals$§!Production Final Bonus §R[This.z_pr_var_plnt_bonus_final_1m_check]%§!\n £food£§G$food$§!Production Basic Bonus §G[This.z_pr_var_plnt_bonus_add_1f_check]%§!\n £food£§G$food$§!Production Special Bonus §G[This.z_pr_var_plnt_bonus_mult_1f_check]%§!\n £food£§G$food$§!Production Final Bonus §G[This.z_pr_var_plnt_bonus_final_1f_check]%§!\n £alloys£§M$alloys$§!Production Basic Bonus §M[This.z_pr_var_plnt_bonus_add_2a_check]%§!\n £alloys£§M$alloys$§!Production Special Bonus §M[This.z_pr_var_plnt_bonus_mult_2a_check]%§!\n £alloys£§M$alloys$§!Production Final Bonus §M[This.z_pr_var_plnt_bonus_final_2a_check]%§!\n £consumer_goods£§P$consumer_goods$§!Production Basic Bonus §P[This.z_pr_var_plnt_bonus_add_2c_check]%§!\n £consumer_goods£§P$consumer_goods$§!Production Special Bonus §P[This.z_pr_var_plnt_bonus_mult_2c_check]%§!\n £consumer_goods£§P$consumer_goods$§!Production Final Bonus §P[This.z_pr_var_plnt_bonus_final_2c_check]%§!\n §SAdvanced Industry§!Production Basic Bonus §S[This.z_pr_var_plnt_bonus_add_3n_check]%§!\n §SAdvanced Industry§!Production Special Bonus §S[This.z_pr_var_plnt_bonus_mult_3n_check]%§!\n §SAdvanced Industry§!Production Final Bonus §S[This.z_pr_var_plnt_bonus_final_3n_check]%§!\n §YRare Resources§!Production Basic Bonus §Y[This.z_pr_var_plnt_bonus_add_3r_check]%§!\n §YRare Resources§!Production Special Bonus §Y[This.z_pr_var_plnt_bonus_mult_3r_check]%§!\n §YRare Resources§!Production Final Bonus §Y[This.z_pr_var_plnt_bonus_final_3r_check]%§!\n £physics£§B$physics_research$§!Production Basic Bonus §B[This.z_pr_var_plnt_bonus_add_rp_check]%§!\n £physics£§B$physics_research$§!Production Special Bonus §B[This.z_pr_var_plnt_bonus_mult_rp_check]%§!\n £physics£§B$physics_research$§!Production Final Bonus §B[This.z_pr_var_plnt_bonus_final_rp_check]%§!\n £engineering£§H$engineering_research$§!Production Basic Bonus §H[This.z_pr_var_plnt_bonus_add_re_check]%§!\n £engineering£§H$engineering_research$§!Production Special Bonus §H[This.z_pr_var_plnt_bonus_mult_re_check]%§!\n £engineering£§H$engineering_research$§!Production Final Bonus §H[This.z_pr_var_plnt_bonus_final_re_check]%§!\n £society£§G$society_research$§!Production Basic Bonus §G[This.z_pr_var_plnt_bonus_add_rs_check]%§!\n £society£§G$society_research$§!Production Special Bonus §G[This.z_pr_var_plnt_bonus_mult_rs_check]%§!\n £society£§G$society_research$§!Production Final Bonus §G[This.z_pr_var_plnt_bonus_final_rs_check]%§!\n £unity£§E$unity$§!Production Basic Bonus §E[This.z_pr_var_plnt_bonus_add_ru_check]%§!\n £unity£§E$unity$§!Production Special Bonus §E[This.z_pr_var_plnt_bonus_mult_ru_check]%§!\n £unity£§E$unity$§!Production Final Bonus §E[This.z_pr_var_plnt_bonus_final_ru_check]%§!\n "
+
+
+
+
+###_[指南]    ############################################################
+ #z_pr_tips_btn_misc_guide: "§G无尽群星§!: 产业革命使用指南\n\nMOD内容提要: 人力经济系统, 产业飞升, 星球经济结构. \n\n§Y人口经济系统§!\n改变原有的基于人口的经济产出模式, 并对所有建筑都做了对应的匹配调整. 一旦你完成了$z_pr_evt_ap_1$, 复杂的人口系统就会转化为更简洁的人力系统, 并通过精密的运算统计决定人力的产出加成. \n可以在游戏一开始设置为§B标准模式§!或者§B历史模式§!, $z_fw1_misc.1_pr_on.tooltip$$z_fw1_misc.1_pr_on.tooltip$\n这个新的人力经济系统中最为重要的两个参数是人力和生产基数, 简单来说人力与生产基数的比值越高, 生产效率越高, 另外还有许多其他的因素也在影响着产出, 比如物种特性, 星球建筑, 科技和传统等等. \n人力系统的另一个优势在于流畅性, 相比于人口, 人力系统更轻量和快捷. 当然, 在多mod环境下许多独特的建筑无法使用人力系统进行产出, 它们将保留旧的人口系统, 自然, 这回一定程度影响优化效果. \n\n§Y产业飞升§!\n产业飞升包括§B$z_pr_evt_ap_1$§!和§B第二次产业革命§!", 在§B第二次产业革命§!中你必须在两种路线中选择一种. \n每次产业革命都将带来革命性的新建筑与区划, 并大幅度提升星球设施的效益. 不同的星球将因地制宜, 获得独特的建筑或区划, 使不同星球更加多样性. \n\n§Y星球经济结构§!\n许多的因素影响着星球的经济结构, 比如物种政策, 经济制度, 人口结构等, 这些东西你可以在星球决策中看到与之相关的设定, 这将使你更好地管理星球并获得更多新的玩法. \n\n§Y总结§!\n简而言之, 人口将被转化为人力系统, 经济系统将更加稳定, 操作复杂度将减少, 游戏将更流畅, 另一方面你可能需要花费更多头脑管理星球的经济系统. \n\n§Y其他注意事项§!\n因为采用了2.9版本的改动, 工厂/铸造厂会被工业区/锻造区取代. \n人口不再增加建筑槽, 建筑槽的数量将由区划, 尤其是城市区划决定, 普通宜居星球上任意2个区划解锁1建筑槽, 城市区额外解锁1建筑槽. 而一些高级星球或者是环世界, 在一开始就解锁全部建筑槽. "
+
+z_pr_tips_btn_misc_guide: "§GInfinite Stellaris§!: Production Revolution User Guide\n\nMOD Abstract: Manpower based economic system, Production Ascension, Planet economic structure.\n\n§YPop Econ. System§!\nchanges the old production system based on pops, and adjusts all buildings accordingly. Once you have finished $z_pr_evt_ap_1$, 复杂的人口系统就会转化为更简洁的人力系统, 并通过精密的运算统计决定人力的产出加成. \n可以在游戏一开始设置为§B标准模式§!或者§B历史模式§!, $z_fw1_misc.1_pr_on.tooltip$$z_fw1_misc.1_pr_on.tooltip$\n这个新的人力经济系统中最为重要的两个参数是人力和生产基数, 简单来说人力与生产基数的比值越高, 生产效率越高, 另外还有许多其他的因素也在影响着产出, 比如物种特性, 星球建筑, 科技和传统等等. \n人力系统的另一个优势在于流畅性, 相比于人口, 人力系统更轻量和快捷. 当然, 在多mod环境下许多独特的建筑无法使用人力系统进行产出, 它们将保留旧的人口系统, 自然, 这回一定程度影响优化效果. \n\n§Y产业飞升§!\n产业飞升包括§B$z_pr_evt_ap_1$§!和§B第二次产业革命§!", 在§B第二次产业革命§!中你必须在两种路线中选择一种. \n每次产业革命都将带来革命性的新建筑与区划, 并大幅度提升星球设施的效益. 不同的星球将因地制宜, 获得独特的建筑或区划, 使不同星球更加多样性. \n\n§Y星球经济结构§!\n许多的因素影响着星球的经济结构, 比如物种政策, 经济制度, 人口结构等, 这些东西你可以在星球决策中看到与之相关的设定, 这将使你更好地管理星球并获得更多新的玩法. \n\n§Y总结§!\n简而言之, 人口将被转化为人力系统, 经济系统将更加稳定, 操作复杂度将减少, 游戏将更流畅, 另一方面你可能需要花费更多头脑管理星球的经济系统. \n\n§Y其他注意事项§!\n因为采用了2.9版本的改动, 工厂/铸造厂会被工业区/锻造区取代. \n人口不再增加建筑槽, 建筑槽的数量将由区划, 尤其是城市区划决定, 普通宜居星球上任意2个区划解锁1建筑槽, 城市区额外解锁1建筑槽. 而一些高级星球或者是环世界, 在一开始就解锁全部建筑槽. "
+
+
+###_[飞升]    第一次产业革命/扩大化/集成化 ############################################################
+ 
+##_[第一次产业革命]
+#_evt
+ z_pr_evt_ap_1: "$z_pr_evt_ap_1$"
+ z_pr_evt_ap_1_take: "§GComplete §!$z_pr_evt_ap_1$"
+ z_pr_evt_ap_1_non: "§HSuspend §!$z_pr_evt_ap_1$"
+ z_pr_tips_ap1_non: "Later, you can open §BInfintie stellaris Settings Panel§!, click on $z_pr_evt_setting$, find Production Ascensions and §Gfinish §!$z_pr_evt_ap_1$."
+#_btn
+ z_pr_tips_btn_ap1_locked: "Temporarily unavailable, you must have §B$tech_self_aware_logic$§!, and complete 6 of §B$tech_mining_2$/$tech_mineral_purification_2$/$tech_alloys_2$/$tech_luxuries_2$/$tech_power_plant_3$/$tech_power_hub_2$/$tech_volatile_motes$/$tech_exotic_gases$/$tech_rare_crystals$§!."
+ z_pr_tips_btn_ap1: "$z_pr_evt_ap_1$\n\nWith the advancement of technology and society, the old production methods can no longer adapt to the new era. We must find new ways to manage the economy of the empire.\n\nThe population will be transformed into manpower, which can be managed in a more efficient way. Unemployment will be reduced, and planet population management becomes easier. But at the same time, decreases, disasters and many issues such as population structure and planetary social structure will become new considerations.\n\nWelcome the new era!"
+ z_pr_tips_btn_ap1_take: "Complete $z_pr_evt_ap_1$\n\nNote: The economic structure may change drastically, and there may be a great lag in a period of time thereafter, and another big lag may occur a year later. Of course, these lags are necessary initializing operations and will not occur again unless there is another large-scale population change."
+
+
