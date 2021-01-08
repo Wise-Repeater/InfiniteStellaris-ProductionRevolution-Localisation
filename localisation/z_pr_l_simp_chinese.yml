@@ -7,8 +7,7 @@
 #_[pr区划]
 #_[v建筑] v建筑_产业产出/v建筑_产业维护/v建筑_tips
 #_[pr建筑]
-#_[mod_pop_checker]
-#_[mod_ai建筑槽]
+#_[mod_all] mod_misc/mod_职位debug/plnt人力估算/plnt人力加成提示/mod_ai建筑槽
 #_[m维护消耗]
 #_[test]
 
@@ -43,6 +42,9 @@
  z_pr_res_guard_0:0 "§B行星防卫军§!"
  z_pr_res_guard:0 "$z_pr$：$z_pr_res_guard_0$"
  z_pr_res_guard_desc:0 "每一点$z_pr_res_guard_0$都会转化为等量的防卫部队。"
+ z_pr_res_co_0:0 "§P企业支持§!"
+ z_pr_res_co:0 "$z_pr$：$z_pr_res_co_0$"
+ z_pr_res_co_desc:0 "只有当$z_pr_res_co_0$产出§G>0§!时，才允许企业建筑的建造。"
 
 
 
@@ -79,7 +81,7 @@
 
 ###_[pr地块]	流动人口/增长率控制/维护_加成/ai建筑	###################################################
 #_[流动人口]
- z_pr_tips_d_pop_function:0 "\n这个功能模块控制着星球物种构成，使物种比例缓慢地按照当前设定进行变化。\n\n另外，这个模块也能向你传达实时的产业参数信息如：\n$z_pr_res_post_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_desc$\n$z_pr_res_admin_0$\n$z_pr_res_admin_desc$\n$z_pr_res_guard_0$\n$z_pr_res_guard_desc$\n"
+ z_pr_tips_d_pop_function:0 "\n这个功能模块控制着星球物种构成，使物种比例缓慢地按照当前设定进行变化。\n\n另外，这个模块也能向你传达实时的产业参数信息如：\n$z_pr_res_post_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_0$\n$z_pr_res_navy_desc$\n$z_pr_res_admin_0$\n$z_pr_res_admin_desc$\n$z_pr_res_guard_0$\n$z_pr_res_guard_desc$\n$z_pr_res_co_desc$\n"
 
  z_pr_d_pop_standard_5:0 "$z_pr$：§B标准型§!种族构成"
  z_pr_d_pop_standard_5_desc:0 "$z_pr_dec_spcs_standard_desc$"
@@ -126,24 +128,27 @@
  z_pr_d_pop_slaved_25_desc:0 "$z_pr_dec_spcs_slaved_desc$"
 
 ###_[核心模块]
- z_pr_tips_d_core_all:0 "实现$z_pr$的各项核心功能，包括建筑槽修正和人口增长率控制。\n星球人力等诸多因素共同影响着人口增长率，在到达星球上限之前，增长率呈现正态分布。而星球人力上限则由星球大小等诸多因素所决定。\n§Y首都行星提供额外§G2§!个建筑槽。"
  z_pr_d_core:0 "$z_pr$：§Y核心模块§!"
- z_pr_d_core_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.5§!个额外建筑槽，最多解锁§G18§!个额外建筑槽。§!"
- z_pr_d_core_plus:0 "$z_pr_d_core$"
- z_pr_d_core_plus_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.75§!个额外建筑槽，最多解锁§G24§!个额外建筑槽。§!"
- z_pr_d_core_full:0 "$z_pr_d_core$"
- z_pr_d_core_full_desc:0 "$z_pr_tips_d_core_all$\n§Y高级世界，默认解锁全部建筑槽。§!"
- z_pr_d_core_no:0 "$z_pr_d_core$"
- z_pr_d_core_no_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.25§!个额外建筑槽，最多解锁§G8§!个额外建筑槽，$origin_void_dwellers$提供额外2个建筑槽。§!"
- z_pr_d_core_mod:0 "$z_pr_d_core$"
- z_pr_d_core_mod_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G1§!个额外建筑槽，最多解锁§G24§!个额外建筑槽。§!"
+ z_pr_d_core_desc:0 "实现$z_pr$的各项核心功能，包括$z_pr_post$调整和人口增长率控制。\n星球人力等诸多因素共同影响着人口增长率，在到达星球上限之前，增长率呈现正态分布。而星球人力上限则由星球大小等诸多因素所决定。"
+ 
+ z_pr_tips_d_building:0 "$z_pr$核心功能之一，为所有殖民地添加建筑槽修正。通常来说，建造越多区划获得越多建筑槽，一些特殊区划和首府建筑可以i提供额外建筑槽，一些高级星球默认解锁全部建筑槽。\n§Y首都行星提供额外§G2§!个建筑槽。"
+ z_pr_d_36_building:0 "$z_pr$：§Y建筑槽§!"
+ z_pr_d_36_building_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G0.75§!个额外建筑槽，最多解锁§G18§!个额外建筑槽。§!"
+ z_pr_d_36_building_plus:0 "$z_pr_d_36_building$"
+ z_pr_d_36_building_plus_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G1§!个额外建筑槽，最多解锁§G24§!个额外建筑槽。§!"
+ z_pr_d_36_building_full:0 "$z_pr_d_36_building$"
+ z_pr_d_36_building_full_desc:0 "$z_pr_tips_d_building$\n§Y高级世界，默认解锁全部建筑槽。§!"
+ z_pr_d_36_building_no:0 "$z_pr_d_36_building$"
+ z_pr_d_36_building_no_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G0.5§!个额外建筑槽，最多解锁§G8§!个额外建筑槽，$origin_void_dwellers$提供额外2个建筑槽。§!"
+ z_pr_d_36_building_mod:0 "$z_pr_d_36_building$"
+ z_pr_d_36_building_mod_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G1.5§!个额外建筑槽，最多解锁§G30§!个额外建筑槽。§!"
 #_vanilla
- z_pr_d_v_core:0 "$z_pr_d_core$"
- z_pr_d_v_core_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.33§!个额外建筑槽，最多解锁§G7§!个额外建筑槽。§!"
- z_pr_d_v_core_plus:0 "$z_pr_d_core$"
- z_pr_d_v_core_plus_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.5§!个额外建筑槽，最多解锁§G1§!个额外建筑槽。§!"
- z_pr_d_v_core_no:0 "$z_pr_d_core$"
- z_pr_d_v_core_no_desc:0 "$z_pr_tips_d_core_all$\n§Y每个区划提供§G0.25§!个额外建筑槽，最多解锁§G5§!个额外建筑槽，$origin_void_dwellers$提供额外§G2§!个建筑槽。§!"
+ z_pr_d_v_building:0 "$z_pr_d_36_building$"
+ z_pr_d_v_building_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G0.5§!个额外建筑槽，最多解锁§G8§!个额外建筑槽。§!"
+ z_pr_d_v_building_plus:0 "$z_pr_d_36_building$"
+ z_pr_d_v_building_plus_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G0.5§!个额外建筑槽，最多解锁§G10§!个额外建筑槽。§!"
+ z_pr_d_v_building_no:0 "$z_pr_d_36_building$"
+ z_pr_d_v_building_no_desc:0 "$z_pr_tips_d_building$\n§Y每个区划提供§G0.33§!个额外建筑槽，最多解锁§G5§!个额外建筑槽，$origin_void_dwellers$提供额外§G2§!个建筑槽。§!"
  
  
 ###_[维护_加成]
@@ -289,8 +294,9 @@
 
 
 
-###_[mod]   ######################################################################
-#_misc
+###_[mod_all]   ######################################################################
+#_  mod_misc/mod_职位debug/plnt人力估算/plnt人力加成提示/mod_ai建筑槽
+#_[mod_misc]
  mod_z_pr_post_z_pr_res_post_produces_add:0 "$z_pr_res_post_0$"
  mod_z_pr_post_z_pr_res_post_produces_mult:0 "$z_pr_res_post_0$"
  mod_z_pr_post_z_pr_res_navy_produces_add:0 "$z_pr_res_navy_0$"
@@ -299,6 +305,8 @@
  mod_z_pr_post_z_pr_res_admin_produces_mult:0 "$z_pr_res_admin_0$"
  mod_z_pr_post_z_pr_res_guard_produces_add:0 "$z_pr_res_guard_0$"
  mod_z_pr_post_z_pr_res_guard_produces_mult:0 "$z_pr_res_guard_0$"
+ mod_z_pr_post_z_pr_res_co_produces_add:0 "$z_pr_res_co_0$"
+ mod_z_pr_post_z_pr_res_co_produces_mult:0 "$z_pr_res_co_0$"
 
  mod_z_pr_production_static_alloys_upkeep_add:0 "$z_pr_production_static$维护消耗：$alloys$"
  
@@ -318,17 +326,83 @@
  mod_z_pr_production_unity_produces_mult:0 "§E凝聚力§!产业额外加成"
  mod_z_pr_production_influence_produces_mult:0 "§Y影响力§!产业修正"
  mod_z_pr_production_minor_artifacts_produces_mult:0 "§Y小型文物§!产业修正"
- 
- 
+
+
+#_[plnt人力估算]
+ z_pr_mod_plnt_manpower:0 "粗略统计星球人力总量\n查看星球决策$z_pr_dec_plnt_var_check$，可以获得详细的人力参数"
+ z_pr_mod_plnt_manpower_few:0 "$z_pr$：人力 §H<15§!"
+ z_pr_mod_plnt_manpower_few_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_15:0 "$z_pr$：人力 §G15+§!"
+ z_pr_mod_plnt_manpower_15_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_30:0 "$z_pr$：人力 §G30+§!"
+ z_pr_mod_plnt_manpower_30_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_45:0 "$z_pr$：人力 §G45+§!"
+ z_pr_mod_plnt_manpower_45_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_60:0 "$z_pr$：人力 §G60+§!"
+ z_pr_mod_plnt_manpower_60_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_75:0 "$z_pr$：人力 §G75+§!"
+ z_pr_mod_plnt_manpower_75_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_100:0 "$z_pr$：人力 §G100+§!"
+ z_pr_mod_plnt_manpower_100_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_125:0 "$z_pr$：人力 §G125+§!"
+ z_pr_mod_plnt_manpower_125_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_150:0 "$z_pr$：人力 §G150+§!"
+ z_pr_mod_plnt_manpower_150_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_200:0 "$z_pr$：人力 §G200+§!"
+ z_pr_mod_plnt_manpower_200_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_250:0 "$z_pr$：人力 §G250+§!"
+ z_pr_mod_plnt_manpower_250_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_300:0 "$z_pr$：人力 §G300+§!"
+ z_pr_mod_plnt_manpower_300_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_400:0 "$z_pr$：人力 §G400+§!"
+ z_pr_mod_plnt_manpower_400_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_500:0 "$z_pr$：人力 §G500+§!"
+ z_pr_mod_plnt_manpower_500_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_750:0 "$z_pr$：人力 §G750+§!"
+ z_pr_mod_plnt_manpower_750_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_1000:0 "$z_pr$：人力 §G1000+§!"
+ z_pr_mod_plnt_manpower_1000_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_1500:0 "$z_pr$：人力 §G1500+§!"
+ z_pr_mod_plnt_manpower_1500_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_2000:0 "$z_pr$：人力 §G2000+§!"
+ z_pr_mod_plnt_manpower_2000_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_3000:0 "$z_pr$：人力 §G3000+§!"
+ z_pr_mod_plnt_manpower_3000_desc:0 "$z_pr_mod_plnt_manpower$"
+ z_pr_mod_plnt_manpower_4000:0 "$z_pr$：人力 §G4000+§!"
+ z_pr_mod_plnt_manpower_4000_desc:0 "$z_pr_mod_plnt_manpower$"
+
+
+#_[plnt人力加成提示]
+ z_pr_mod_plnt_manpower_bonus:0 "人力加成=人力总量/$z_pr_res_post_0$，若人力过少产业产出会受到极大影响，反之如果人力过量则会让产出效率大幅度提升。\n查看星球决策$z_pr_dec_plnt_var_check$，可以获得详细的加成参数。"
+ z_pr_mod_plnt_manpower_bonus_25:0 "$z_pr$：§R人力严重不足§!(<25%)"
+ z_pr_mod_plnt_manpower_bonus_25_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_50:0 "$z_pr$：§H人力不足§!(<50%)"
+ z_pr_mod_plnt_manpower_bonus_50_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_75:0 "$z_pr$：§H人力不足§!(<75%)"
+ z_pr_mod_plnt_manpower_bonus_75_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_normal:0 "$z_pr$：§Y人力充足§!"
+ z_pr_mod_plnt_manpower_bonus_normal_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_150:0 "$z_pr$：§G人力充足§!(>150%)"
+ z_pr_mod_plnt_manpower_bonus_150_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_200:0 "$z_pr$：§G人力充足§!(>200%)"
+ z_pr_mod_plnt_manpower_bonus_200_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_250:0 "$z_pr$：§G人力充足§!(>250%)"
+ z_pr_mod_plnt_manpower_bonus_250_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_300:0 "$z_pr$：§G人力充足§!(>300%)"
+ z_pr_mod_plnt_manpower_bonus_300_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_400:0 "$z_pr$：§G人力充足§!(>400%)"
+ z_pr_mod_plnt_manpower_bonus_400_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+ z_pr_mod_plnt_manpower_bonus_500:0 "$z_pr$：§G人力充足§!(>500%)"
+ z_pr_mod_plnt_manpower_bonus_500_desc:0 "$z_pr_mod_plnt_manpower_bonus$"
+
+
 #_[mod_pop_checker]
  z_pr_mod_pop_checker:0 "$z_pr$：§G检测§!"
  z_pr_mod_pop_checker_desc:0 "快速检测辅助系统！"
 
 
-
-
 #_[mod_ai建筑槽]
- z_pr_mod_cntr_building_slot_start:0 "$z_pr$：§B开局建筑修整§!"
+ z_pr_mod_cntr_building_slot_start:0 "$z_pr$：§B范用建筑槽修正§!"
  z_pr_mod_cntr_building_slot_start_desc:0 "辅助功能"
  z_pr_mod_cntr_building_slot_6:0 "$z_pr$：§GAI建筑槽§!"
  z_pr_mod_cntr_building_slot_6_desc:0 "他们是AI，他们当然可以！"
