@@ -7,11 +7,11 @@
 
 
 ###_[mod_ai建设]
- z_pr_mod_plnt_ai_build_dstr_generator:0 "$z_pr$：$district_generator$§GAI建设§!"
- z_pr_mod_plnt_ai_build_dstr_generator_desc:0 "AI建设中"
- z_pr_mod_plnt_ai_build_dstr_mining:0 "$z_pr$：$district_mining$§GAI建设§!"
+ z_pr_mod_plnt_ai_build_dstr_generator:0 "$z_pr$：$district_generator$§GAI Construction§!"
+ z_pr_mod_plnt_ai_build_dstr_generator_desc:0 "AI Building"
+ z_pr_mod_plnt_ai_build_dstr_mining:0 "$z_pr$：$district_mining$§GAI Construction§!"
  z_pr_mod_plnt_ai_build_dstr_mining_desc:0 "$z_pr_mod_plnt_ai_build_dstr_generator_desc$"
- z_pr_mod_plnt_ai_build_dstr_farming:0 "$z_pr$：$district_farming$§GAI建设§!"
+ z_pr_mod_plnt_ai_build_dstr_farming:0 "$z_pr$：$district_farming$§GAI Construction§!"
  z_pr_mod_plnt_ai_build_dstr_farming_desc:0 "$z_pr_mod_plnt_ai_build_dstr_generator_desc$"
 
 
