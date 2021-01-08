@@ -59,7 +59,8 @@
  #"流动人口"
  pop_cat_z_pr_freeman:0 "Freeman"
  pop_cat_z_pr_freeman_plural:0 "Freemen"
- pop_cat_z_pr_freeman_desc:0 "Wanderers, travelers, and opportunity-seeking adventurers, they live without a place called home, and might move to wherever else at any time." #"流浪者，旅行者或者是来寻找机会的人群，它们居无定所，随时可能会移民到别处."
+ pop_cat_z_pr_freeman_desc:0 "Wanderers, travelers, and opportunity-seeking adventurers, they live without a place called home, and might move to wherever else at any time." 
+ #"流浪者，旅行者或者是来寻找机会的人群，它们居无定所，随时可能会移民到别处."
  
 #_job
  job_z_pr_freeman_admin:0 "Administrator"   
